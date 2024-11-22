@@ -12,9 +12,8 @@ from sklearn.model_selection import train_test_split
 
 #C1
 datos = "./genres_original"
-#classes = ['blues', 'classical','country','disco','hiphop','jazz','metal','pop','reggae','rock']
+classes = ['blues', 'classical','country','disco','hiphop','jazz','metal','pop','reggae','rock']
 
-classes = ['blues', 'classical']
 #C2
 def procesarDatosDirectorio(data_dir,classes,target_shape=(150,150)):
     data=[]
@@ -53,14 +52,14 @@ def procesarDatosDirectorio(data_dir,classes,target_shape=(150,150)):
 
 #c3
 data,labels = procesarDatosDirectorio(datos,classes)
-#Errores al cargar jazz.00054.wav
+#Errores al cargar jazz.00054.wav <-- eliminar
 
 #c4
 print(data.shape) 
 print(labels.shape)
 
 #c5
-labels = to_categorical(labels,num_classes = len(classes)) # Converting labels to one-hot encoding
+labels = to_categorical(labels,num_classes = len(classes))
 print(labels)
 
 #c6
@@ -113,7 +112,6 @@ model.add(Dense(units=len(classes),activation='softmax'))
 model.summary()
 
 #c18
-
 model.compile(optimizer=Adam(learning_rate=0.0001),loss='categorical_crossentropy',metrics=['accuracy'])
 
 #c19
