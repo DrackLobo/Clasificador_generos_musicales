@@ -34,24 +34,21 @@ def procesarDatosDirectorio(data_dir,classes,target_shape=(150,150)):
                 muestras_segmento = duracion_segmento * sample_rate
                 muestras_superposicion = duracion_superposicion * sample_rate
                 
-                
                 num_segmentos = int(np.ceil((len(audio_data)-muestras_segmento)/(muestras_segmento-muestras_superposicion)))+1
-                
                 
                 for i in range(num_segmentos):
                    
                     inicio = i*(muestras_segmento-muestras_superposicion)
                     fin = inicio+muestras_segmento
-                    #
+                
                     segmento = audio_data[inicio:fin]
-                    #Melspectrogram part
+                    
                     mel_spectrogram = librosa.feature.melspectrogram(y=segmento,sr=sample_rate)
-                    #Resize matrix based on provided target shape
                     mel_spectrogram = resize(np.expand_dims(mel_spectrogram,axis=-1),target_shape)
-                    #Append data to list
+                    
                     data.append(mel_spectrogram)
                     labels.append(i_class)
-    #Return
+    
     return np.array(data),np.array(labels)
 
 #c3
