@@ -5,7 +5,7 @@ import numpy as np
 import librosa
 from io import BytesIO
 from tensorflow.image import resize
-from PIL import Image
+
 
 
 st.set_page_config(page_title="Clasificador musica", page_icon="🤖", layout="wide")
@@ -96,3 +96,4 @@ if test is not None:
                 st.markdown("**El género de la música es: :red[{}]**".format(label[indice]))
             except Exception as e:
                 st.error(f"Error al procesar el archivo: {e}")
+
