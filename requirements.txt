@@ -1,5 +1,7 @@
-pip install tensorflow
-pip install librosa
-pip install matplotlib
-pip install scikit-learn
-pip install numpy
+streamlit
+librosa
+scikit-learn
+numpy
+pandas
+matplotlib
+soundfile
